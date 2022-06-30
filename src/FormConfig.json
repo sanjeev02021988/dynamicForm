@@ -91,6 +91,7 @@
     "type": "FIELD",
     "subType": "OPTIONS",
     "order": 2,
+    "size": "M",
     "label": "Label: C",
     "options": [
       {
@@ -365,11 +366,10 @@
     "type": "FIELD",
     "size": "XL",
     "required": true,
-    "subType": "NUMBER",
-    "regex": "[0-9]",
-    "ValidationMsg": "Not a Valid Number",
+    "subType": "OPTIONS",
+    "url": "/api/v1/options/Z",
     "order": 3,
-    "label": "Label: Z (number)"
+    "label": "Label: Z"
   },
   {
     "id": "O",

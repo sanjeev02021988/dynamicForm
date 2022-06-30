@@ -40,7 +40,7 @@ function Form(props) {
   }, [form.values, isVisibleMap]);
 
   return (
-    <div>
+    <div className={"Form"}>
       {groups.map((group) => (
         <Group
           key={group.id}

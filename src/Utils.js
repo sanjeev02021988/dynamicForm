@@ -2,13 +2,11 @@ export function processFormConfig(nodes = []) {
   const initialValues = {};
   const validationMap = {};
   const nodeMap = nodes.reduce((nodeMap, node) => {
-    const {
-      id,
-      required,
-      regex,
-      ValidationMsg = "Invalid Input",
-      size = "M"
-    } = node;
+    const { id, required, regex, type, ValidationMsg = "Invalid Input" } = node;
+    let { size } = node;
+    if (!size) {
+      size = type === "GROUP" ? "XL" : "M";
+    }
     if (regex) {
       let regExp = new RegExp(regex);
       validationMap[id] = (val) =>
@@ -53,6 +51,8 @@ export function processFormConfig(nodes = []) {
       groups.push({
         id: nodeId,
         order,
+        size: nodeMap[nodeId].size,
+        // label: nodeMap[nodeId].label,
         members: node.members || [nodeId],
         conditions: nodeMap[nodeId].conditions
       });

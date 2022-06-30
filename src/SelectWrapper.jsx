@@ -4,9 +4,9 @@ import { InputWrapper, Select } from "@mantine/core";
 import { SizeMap } from "./consts";
 
 const getOptions = (options, dependsOn, form) =>
-  dependsOn ? (options ? options[form[dependsOn]] : []) : options;
+  dependsOn ? (options ? options[form[dependsOn]] : []) : options || [];
 
-const SelectWrapper = ({ fieldData, form }) => {
+const SelectWrapper = ({ fieldData, form, singleChild }) => {
   const {
     id,
     label,
@@ -36,7 +36,7 @@ const SelectWrapper = ({ fieldData, form }) => {
       label={label}
       description={description}
       className={"InputWrapper"}
-      style={{ width: SizeMap[size] }}
+      style={{ width: SizeMap[singleChild ? "XL" : size] }}
     >
       <Select id={`field-${id}`} data={fOptions} {...form?.getInputProps(id)} />
     </InputWrapper>

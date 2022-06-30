@@ -12,6 +12,7 @@ function Group({ group, form, nodeMap, isVisibleMap }) {
   if (visibleMembers.length === 0) {
     return null;
   }
+  const singleChild = visibleMembers.length === 1;
   return (
     <div className={`GroupWrapper ${label && "WithLabel"}`}>
       {label && <div className={"Label"}>{label}</div>}
@@ -22,6 +23,7 @@ function Group({ group, form, nodeMap, isVisibleMap }) {
               key={memberKey}
               fieldData={nodeMap[memberKey]}
               form={form}
+              singleChild={singleChild}
             />
           </>
         ))}

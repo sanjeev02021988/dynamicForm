@@ -7,26 +7,29 @@
   text-align: center;
   margin: 20px 10px;
 }
-
+.Form {
+  display: flex;
+  flex-wrap: wrap;
+}
 .GroupWrapper {
   display: block;
   width: 100%;
 }
 /* CSS: START Group border */
 .GroupWrapper {
-  margin: 10px 0;
-  border: 1px solid lightgrey;
-  border-left: 0;
-  border-right: 0;
+  padding: 10px 5px;
 }
-.GroupWrapper:not(:last-of-type) {
-  border-bottom: 0;
+.Group {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
 }
 /* CSS: END Group border */
 /* CSS: START WithLabel */
 .GroupWrapper.WithLabel {
   border: 1px solid lightgrey;
   border-radius: 6px;
+  margin: 10px 0;
+  padding: 0;
 }
 
 .GroupWrapper.WithLabel .InputWrapper {
@@ -41,6 +44,9 @@
   background-color: white;
   max-width: max-content;
   padding: 0 10px;
+}
+.GroupWrapper.WithLabel .Group {
+  border: 0px;
 }
 /* CSS: END WithLabel */
 

@@ -1,7 +1,10 @@
 const ServiceCache = {};
 
 async function OptionService(url, parentId, form) {
-  const optionURL = `${url}?value=${form[parentId]}`;
+  let optionURL = url;
+  if (parentId) {
+    optionURL = `${url}?value=${form[parentId]}`;
+  }
   if (ServiceCache[optionURL]) {
     return ServiceCache[optionURL];
   }
@@ -10,8 +13,8 @@ async function OptionService(url, parentId, form) {
     setTimeout(() => {
       const response = [
         {
-          value: `Fetched ${form[parentId]}`,
-          label: `Fetched ${form[parentId]}`
+          value: `Fetched ${form[parentId] || ""}`,
+          label: `Fetched ${form[parentId] || ""}`
         }
       ];
       ServiceCache[optionURL] = response;
