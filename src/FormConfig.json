@@ -1,0 +1,382 @@
+[
+  {
+    "id": "Block_AJK",
+    "type": "GROUP",
+    "order": 0,
+    "members": ["A", "J", "K"]
+  },
+  {
+    "id": "A",
+    "value": "a1",
+    "type": "FIELD",
+    "subType": "OPTIONS",
+    "label": "Label: A",
+    "size": "XL",
+    "order": 0,
+    "options": [
+      {
+        "value": "a1",
+        "label": "Label: a1 B",
+        "child": "B"
+      },
+      {
+        "value": "a2",
+        "label": "Label: a2 C",
+        "child": "C"
+      },
+      {
+        "value": "a3",
+        "label": "Label: a3 I",
+        "child": "I"
+      }
+    ]
+  },
+  {
+    "id": "B",
+    "value": "b1",
+    "type": "FIELD",
+    "subType": "OPTIONS",
+    "order": 1,
+    "label": "Label: B",
+    "options": [
+      {
+        "value": "b1",
+        "label": "Label: b1 E",
+        "child": "E"
+      },
+      {
+        "value": "b2",
+        "label": "Label: b2 D",
+        "child": "D"
+      }
+    ]
+  },
+  {
+    "id": "E",
+    "value": "e1",
+    "type": "FIELD",
+    "order": 4,
+    "subType": "OPTIONS",
+    "label": "Label: E",
+    "options": [
+      {
+        "value": "e1",
+        "label": "Label: e1 G",
+        "child": "G"
+      },
+      {
+        "value": "e2",
+        "label": "Label: e2 H",
+        "child": "H"
+      }
+    ]
+  },
+  {
+    "id": "G",
+    "type": "FIELD",
+    "required": true,
+    "order": 6,
+    "label": "Label: G"
+  },
+  {
+    "id": "H",
+    "type": "FIELD",
+    "required": true,
+    "order": 7,
+    "label": "Label: H"
+  },
+  {
+    "id": "C",
+    "value": "c1",
+    "type": "FIELD",
+    "subType": "OPTIONS",
+    "order": 2,
+    "label": "Label: C",
+    "options": [
+      {
+        "value": "c1",
+        "label": "Label: c1 D",
+        "child": "D"
+      },
+      {
+        "value": "c2",
+        "label": "Label: c2 F",
+        "child": "F"
+      }
+    ]
+  },
+  {
+    "id": "D",
+    "type": "FIELD",
+    "order": 3,
+    "required": true,
+    "label": "Label: D"
+  },
+  {
+    "id": "F",
+    "type": "FIELD",
+    "order": 5,
+    "label": "Label: F"
+  },
+  {
+    "id": "I",
+    "type": "FIELD",
+    "order": 8,
+    "label": "Label: I"
+  },
+  {
+    "id": "J",
+    "type": "FIELD",
+    "subType": "OPTIONS",
+    "order": 1,
+    "label": "Label: J (depends on A)",
+    "dependsOn": "A",
+    "options": {
+      "a1": [
+        {
+          "value": "J1",
+          "label": "Label: J1"
+        },
+        {
+          "value": "J2",
+          "label": "Label: J2"
+        }
+      ],
+      "a2": [
+        {
+          "value": "J2",
+          "label": "Label: J2"
+        },
+        {
+          "value": "J3",
+          "label": "Label: J3"
+        }
+      ],
+      "a3": [
+        {
+          "value": "J3",
+          "label": "Label: J3"
+        },
+        {
+          "value": "J4",
+          "label": "Label: J4"
+        }
+      ]
+    }
+  },
+  {
+    "id": "K",
+    "value": "k1",
+    "type": "FIELD",
+    "subType": "OPTIONS",
+    "order": 2,
+    "label": "Label: K",
+    "options": [
+      {
+        "value": "k1",
+        "label": "Label: k1 Block_LM",
+        "child": "Block_LM"
+      },
+      {
+        "value": "k2",
+        "label": "Label: k2 Block_NO",
+        "child": "Block_NO"
+      }
+    ]
+  },
+  {
+    "id": "Block_LM",
+    "type": "GROUP",
+    "order": 9,
+    "members": ["L", "M"]
+  },
+  {
+    "id": "L",
+    "type": "FIELD",
+    "order": 0,
+    "label": "Label: L"
+  },
+  {
+    "id": "M",
+    "value": "m1",
+    "type": "FIELD",
+    "subType": "OPTIONS",
+    "order": 1,
+    "label": "Label: M",
+    "options": [
+      {
+        "value": "m1",
+        "label": "Label: m1 P",
+        "child": "P"
+      },
+      {
+        "value": "m2",
+        "label": "Label: m2 Q",
+        "child": "Q"
+      }
+    ]
+  },
+  {
+    "id": "P",
+    "type": "FIELD",
+    "order": 11,
+    "label": "Label: P"
+  },
+  {
+    "id": "Q",
+    "value": "q1",
+    "type": "FIELD",
+    "subType": "OPTIONS",
+    "order": 12,
+    "label": "Label: Q",
+    "options": [
+      {
+        "value": "q1",
+        "label": "Label: q1 R",
+        "child": "R"
+      },
+      {
+        "value": "q2",
+        "label": "Label: q2 S",
+        "child": "S"
+      }
+    ]
+  },
+  {
+    "id": "R",
+    "type": "FIELD",
+    "order": 13,
+    "label": "Label: R"
+  },
+  {
+    "id": "S",
+    "value": "s1",
+    "type": "FIELD",
+    "subType": "OPTIONS",
+    "order": 14,
+    "label": "Label: S",
+    "options": [
+      {
+        "value": "s1",
+        "label": "Label: s1 T",
+        "child": "T"
+      },
+      {
+        "value": "s2",
+        "label": "Label: s2 Block_UV",
+        "child": "Block_UV"
+      }
+    ]
+  },
+  {
+    "id": "T",
+    "type": "FIELD",
+    "order": 15,
+    "label": "Label: T"
+  },
+  {
+    "id": "Block_NO",
+    "type": "GROUP",
+    "order": 10,
+    "members": ["N", "O"]
+  },
+  {
+    "id": "N",
+    "value": "n1",
+    "type": "FIELD",
+    "subType": "OPTIONS",
+    "order": 0,
+    "label": "Label: N",
+    "options": [
+      {
+        "value": "n1",
+        "label": "Label: n1 Block_UV",
+        "child": "Block_UV"
+      },
+      {
+        "value": "n2",
+        "label": "Label: n2 Block_WXYZ",
+        "child": "Block_WXYZ"
+      }
+    ]
+  },
+  {
+    "id": "Block_UV",
+    "type": "GROUP",
+    "order": 16,
+    "members": ["U", "V"]
+  },
+  {
+    "id": "U",
+    "type": "FIELD",
+    "order": 0,
+    "label": "Label: U"
+  },
+  {
+    "id": "V",
+    "type": "FIELD",
+    "order": 1,
+    "label": "Label: V"
+  },
+  {
+    "id": "Block_WXYZ",
+    "type": "GROUP",
+    "order": 17,
+    "members": ["W", "X", "Y", "Z"]
+  },
+  {
+    "id": "W",
+    "value": "w1",
+    "type": "FIELD",
+    "size": "XL",
+    "subType": "OPTIONS",
+    "order": 0,
+    "label": "Label: W",
+    "options": [
+      {
+        "value": "w1",
+        "label": "Label: w1"
+      },
+      {
+        "value": "w2",
+        "label": "Label: w2"
+      }
+    ]
+  },
+  {
+    "id": "X",
+    "type": "FIELD",
+    "subType": "OPTIONS",
+    "order": 1,
+    "label": "Label: X (depends on W)",
+    "dependsOn": "W",
+    "url": "/api/v1/options/X/W"
+  },
+  {
+    "id": "Y",
+    "type": "FIELD",
+    "order": 2,
+    "regex": "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$",
+    "ValidationMsg": "Invalid Email Format",
+    "label": "Label: Y (email)"
+  },
+  {
+    "id": "Z",
+    "type": "FIELD",
+    "size": "XL",
+    "required": true,
+    "subType": "NUMBER",
+    "regex": "[0-9]",
+    "ValidationMsg": "Not a Valid Number",
+    "order": 3,
+    "label": "Label: Z (number)"
+  },
+  {
+    "id": "O",
+    "type": "FIELD",
+    "subType": "NUMBER",
+    "regex": "[0-9]",
+    "order": 1,
+    "label": "Label: O"
+  }
+]

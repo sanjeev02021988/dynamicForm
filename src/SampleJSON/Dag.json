@@ -1,0 +1,54 @@
+[
+  {
+    "Id": "A",
+    "Type": "DAG",
+    "Value": "a1",
+    "Children": {
+      "a1": "B",
+      "a2": "C"
+    }
+  },
+  {
+    "Id": "B",
+    "Type": "DAG",
+    "Value": "b1",
+    "Children": {
+      "b1": "E",
+      "b2": "D"
+    }
+  },
+  {
+    "Id": "C",
+    "Type": "DAG",
+    "Value": "c1",
+    "Children": {
+      "c1": "D",
+      "c2": "E"
+    }
+  },
+  {
+    "Id": "D",
+    "Type": "Leaf"
+  },
+  {
+    "Id": "E",
+    "Type": "DAG",
+    "Value": "e1",
+    "Children": {
+      "e1": "G",
+      "e2": "H"
+    }
+  },
+  {
+    "Id": "G",
+    "Type": "Leaf"
+  },
+  {
+    "Id": "H",
+    "Type": "Leaf"
+  },
+  {
+    "Id": "F",
+    "Type": "Leaf"
+  }
+]

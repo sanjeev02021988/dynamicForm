@@ -1,0 +1,177 @@
+[
+  {
+    "Id": "Block_AJK",
+    "Type": "Block",
+    "Members": "A, J, K"
+  },
+  {
+    "Id": "A",
+    "Type": "DAG",
+    "Value": "a1",
+    "Children": {
+      "a1": "B",
+      "a2": "C",
+      "a3": "I"
+    }
+  },
+  {
+    "Id": "B",
+    "Type": "DAG",
+    "Value": "b1",
+    "Children": {
+      "b1": "E",
+      "b2": "D"
+    }
+  },
+  {
+    "Id": "E",
+    "Type": "DAG",
+    "Value": "e1",
+    "Children": {
+      "e1": "G",
+      "e2": "H"
+    }
+  },
+  {
+    "Id": "G",
+    "Type": "Leaf"
+  },
+  {
+    "Id": "H",
+    "Type": "Leaf"
+  },
+  {
+    "Id": "D",
+    "Type": "Leaf"
+  },
+  {
+    "Id": "C",
+    "Type": "DAG",
+    "Value": "c1",
+    "Children": {
+      "c1": "D",
+      "c2": "F"
+    }
+  },
+  {
+    "Id": "F",
+    "Type": "Leaf"
+  },
+  {
+    "Id": "I",
+    "Type": "Leaf"
+  },
+  {
+    "Id": "J",
+    "Type": "Leaf"
+  },
+  {
+    "Id": "K",
+    "Type": "DAG",
+    "Value": "k1",
+    "Children": {
+      "k1": "Block_LM",
+      "k2": "Block_NO"
+    }
+  },
+  {
+    "Id": "Block_LM",
+    "Type": "Block",
+    "Members": "L, M"
+  },
+  {
+    "Id": "L",
+    "Type": "Leaf"
+  },
+  {
+    "Id": "M",
+    "Type": "DAG",
+    "Value": "m1",
+    "Children": {
+      "m1": "P",
+      "m2": "Q"
+    }
+  },
+  {
+    "Id": "P",
+    "Type": "Leaf"
+  },
+  {
+    "Id": "Q",
+    "Type": "DAG",
+    "Value": "q1",
+    "Children": {
+      "q1": "R",
+      "q2": "S"
+    }
+  },
+  {
+    "Id": "R",
+    "Type": "Leaf"
+  },
+  {
+    "Id": "S",
+    "Type": "DAG",
+    "Value": "s1",
+    "Children": {
+      "s1": "T",
+      "s2": "Block_UV"
+    }
+  },
+  {
+    "Id": "T",
+    "Type": "Leaf"
+  },
+  {
+    "Id": "Block_UV",
+    "Type": "Block",
+    "Members": "U, V"
+  },
+  {
+    "Id": "U",
+    "Type": "Leaf"
+  },
+  {
+    "Id": "V",
+    "Type": "Leaf"
+  },
+  {
+    "Id": "Block_NO",
+    "Type": "Block",
+    "Members": "N, O"
+  },
+  {
+    "Id": "N",
+    "Type": "DAG",
+    "Value": "n1",
+    "Children": {
+      "n1": "Block_UV",
+      "n2": "Block_WXYZ"
+    }
+  },
+  {
+    "Id": "Block_WXYZ",
+    "Type": "Block",
+    "Members": "W, X, Y, Z"
+  },
+  {
+    "Id": "W",
+    "Type": "Leaf"
+  },
+  {
+    "Id": "X",
+    "Type": "Leaf"
+  },
+  {
+    "Id": "Y",
+    "Type": "Leaf"
+  },
+  {
+    "Id": "Z",
+    "Type": "Leaf"
+  },
+  {
+    "Id": "O",
+    "Type": "Leaf"
+  }
+]
