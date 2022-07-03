@@ -1,7 +1,8 @@
+import { SizeMap } from "./consts";
 import FieldWrapper from "./FieldWrapper";
 
 function Group({ group, form, nodeMap, isVisibleMap }) {
-  const { members, label = "", id } = group;
+  const { members, label = "", id, size } = group;
 
   // Render group only if it is visible.
   if (!isVisibleMap[id]) {
@@ -18,11 +19,19 @@ function Group({ group, form, nodeMap, isVisibleMap }) {
   // Single child should occupy the whole available width of the group.
   const singleChild = visibleMembers.length === 1;
   return (
-    <div className={`GroupWrapper ${label && "WithLabel"}`}>
+    <div
+      className={`GroupWrapper ${label && "WithLabel"}`}
+      style={{ width: SizeMap[size] }}
+    >
       {label && <div className={"Label"}>{label}</div>}
       <div className={"Group"}>
         {visibleMembers.map((key) => (
-          <FieldWrapper key={key} fieldData={nodeMap[key]} form={form} fullWidth={singleChild} />
+          <FieldWrapper
+            key={key}
+            fieldData={nodeMap[key]}
+            form={form}
+            fullWidth={singleChild}
+          />
         ))}
       </div>
     </div>

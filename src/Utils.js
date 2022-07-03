@@ -1,16 +1,12 @@
-import { Type, Sizes } from "./consts";
-
 // Function to process nodes and to generate groups and maps for nodes, initial values and validations.
 export function processFormConfig(nodes = []) {
   const initialValues = {};
   const validationMap = {};
   // Step 1: Iterate nodes to create map for nodes, initial values and validations.
   const nodeMap = nodes.reduce((nodeMap, node) => {
-    const { id, required, regex, type, ValidationMsg = "Invalid Input" } = node;
+    const { id, required, regex, ValidationMsg = "Invalid Input" } = node;
     let { size } = node;
-    if (!size) {
-      size = type === Type.GROUP ? Sizes.XL : Sizes.M;
-    }
+
     // Populate validation map.
     if (regex) {
       let regExp = new RegExp(regex);

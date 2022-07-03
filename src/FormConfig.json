@@ -35,6 +35,7 @@
     "id": "B",
     "value": "b1",
     "type": "FIELD",
+    "size": "M",
     "subType": "OPTIONS",
     "order": 1,
     "label": "Label: B",
@@ -55,6 +56,7 @@
     "id": "E",
     "value": "e1",
     "type": "FIELD",
+    "size": "M",
     "subType": "OPTIONS",
     "order": 4,
     "label": "Label: E",
@@ -111,6 +113,7 @@
   {
     "id": "D",
     "type": "FIELD",
+    "size": "M",
     "order": 3,
     "required": true,
     "label": "Label: D"

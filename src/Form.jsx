@@ -1,12 +1,12 @@
 import { useCallback, useMemo, useState } from "react";
 import { Button, Alert } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { AlertCircle, CircleCheck } from 'tabler-icons-react';
+import { AlertCircle, CircleCheck } from "tabler-icons-react";
 import { Type } from "./consts";
 import { processFormConfig, getVisibleMap } from "./Utils";
 import Group from "./Group";
 
-function Form({ config } ) {
+function Form({ config }) {
   const [isInvalid, setInvalid] = useState(false);
   const [validationMessage, setValidationMessage] = useState("");
   // Process config object to get Groups to render and maps for nodes, validation & initial Values.
@@ -18,7 +18,7 @@ function Form({ config } ) {
   const form = useForm({ initialValues, validate });
   // Required to check if the field should be visible or not.
   const isVisibleMap = useMemo(
-    () => getVisibleMap(nodeMap, form.values, groups), 
+    () => getVisibleMap(nodeMap, form.values, groups),
     [nodeMap, form.values, groups]
   );
   // Method to be called on submit of the form.
@@ -26,7 +26,7 @@ function Form({ config } ) {
     const values = {};
     // Get and validate values for visible fields.
     form.clearErrors();
-    for(let key in isVisibleMap) {
+    for (let key in isVisibleMap) {
       // Only process fields which are visible.
       if (isVisibleMap[key] && nodeMap[key].type !== Type.GROUP) {
         values[key] = form.values[key] || null;
@@ -43,14 +43,17 @@ function Form({ config } ) {
     setValidationMessage("Form Submitted Successfully!");
     // form.reset();
     console.log(values);
-  }, [form.values, isVisibleMap, nodeMap]);
+  }, [form, isVisibleMap, nodeMap]);
 
-  const alertProps = useMemo(() => ({
-    className: "WithoutDesp",
-     icon: isInvalid ? <AlertCircle size={16} /> : <CircleCheck size={16} />,
-    title: validationMessage,
-    color: isInvalid ? "red" : "green"
-  }), [isInvalid, validationMessage]);
+  const alertProps = useMemo(
+    () => ({
+      className: "WithoutDesp",
+      icon: isInvalid ? <AlertCircle size={16} /> : <CircleCheck size={16} />,
+      title: validationMessage,
+      color: isInvalid ? "red" : "green"
+    }),
+    [isInvalid, validationMessage]
+  );
 
   return (
     <div className={"Form"}>
@@ -64,7 +67,9 @@ function Form({ config } ) {
         />
       ))}
       <div className="Footer">
-        <Button className={"Submit"} onClick={onSubmit}>Submit</Button>
+        <Button className={"Submit"} onClick={onSubmit}>
+          Submit
+        </Button>
         {validationMessage && <Alert {...alertProps} />}
       </div>
     </div>

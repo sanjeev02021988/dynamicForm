@@ -61,7 +61,6 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  
 }
 
 .InputWrapper .mantine-Input-wrapper,
@@ -79,7 +78,7 @@
 }
 .InputWrapper .mantine-Group-root {
   width: 100%;
-  padding-top: 10px !important;
+  padding: 10px 0 !important;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -91,10 +90,11 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis; 
+  text-overflow: ellipsis;
 }
 .Footer {
   display: flex;
+  width: 100%;
   align-items: center;
   margin-top: 30px;
   margin-left: 20px;

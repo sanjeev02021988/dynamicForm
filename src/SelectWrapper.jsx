@@ -48,7 +48,9 @@ const SelectWrapper = ({ fieldData, form, fullWidth }) => {
   if (fOptions.length === 2) {
     return (
       <RadioGroup {...fieldProps} {...fieldWrapperProps} size="sm">
-        {fOptions.map(option => <Radio key={option.value} value={option.value} label={option.label} />)}
+        {fOptions.map((option) => (
+          <Radio key={option.value} value={option.value} label={option.label} />
+        ))}
       </RadioGroup>
     );
   }
