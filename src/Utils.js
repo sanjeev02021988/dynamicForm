@@ -4,8 +4,7 @@ export function processFormConfig(nodes = []) {
   const validationMap = {};
   // Step 1: Iterate nodes to create map for nodes, initial values and validations.
   const nodeMap = nodes.reduce((nodeMap, node) => {
-    const { id, required, regex, ValidationMsg = "Invalid Input" } = node;
-    let { size } = node;
+    const { id, required, regex, size, ValidationMsg = "Invalid Input" } = node;
 
     // Populate validation map.
     if (regex) {
@@ -66,13 +65,13 @@ function generateGroups(nodes, nodeMap) {
     });
     // Add groups or single nodes as groups to the groups array.
     if (!nodeMap[nodeId].groupId) {
+      const { size, conditions, members = [nodeId] } = nodeMap[nodeId];
       groups.push({
         id: nodeId,
         order,
-        size: nodeMap[nodeId].size,
-        // label: nodeMap[nodeId].label,
-        members: node.members || [nodeId],
-        conditions: nodeMap[nodeId].conditions
+        size,
+        members,
+        conditions
       });
     }
   });

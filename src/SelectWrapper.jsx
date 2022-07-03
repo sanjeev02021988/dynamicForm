@@ -11,7 +11,7 @@ const SelectWrapper = ({ fieldData, form, fullWidth }) => {
     description,
     required,
     options,
-    size,
+    size = Sizes.M,
     dependsOn,
     url,
     placeholder

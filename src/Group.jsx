@@ -1,8 +1,8 @@
-import { SizeMap } from "./consts";
+import { SizeMap, Sizes } from "./consts";
 import FieldWrapper from "./FieldWrapper";
 
 function Group({ group, form, nodeMap, isVisibleMap }) {
-  const { members, label = "", id, size } = group;
+  const { members, label = "", id, size =  Sizes.XL } = group;
 
   // Render group only if it is visible.
   if (!isVisibleMap[id]) {

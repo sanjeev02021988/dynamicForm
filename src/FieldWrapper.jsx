@@ -11,7 +11,7 @@ const FieldWrapper = ({ fieldData, form, fullWidth }) => {
     description,
     required,
     subType,
-    size,
+    size = Sizes.M,
     placeholder
   } = fieldData;
   const { error } = form?.getInputProps(id);
