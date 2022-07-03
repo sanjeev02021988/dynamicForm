@@ -10,6 +10,8 @@
 .Form {
   display: flex;
   flex-wrap: wrap;
+  margin: auto;
+  max-width: 600px;
 }
 .GroupWrapper {
   display: block;
@@ -59,17 +61,47 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  
 }
 
 .InputWrapper .mantine-Input-wrapper,
 .InputWrapper .mantine-Select-root,
 .InputWrapper .mantine-Select-wrapper {
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
-
-button {
+.InputWrapper .mantine-Select-error,
+.InputWrapper .mantine-InputWrapper-label,
+.InputWrapper .mantine-RadioGroup-label,
+.InputWrapper .mantine-InputWrapper-error {
+  align-self: flex-start;
+}
+.InputWrapper .mantine-Group-root {
+  width: 100%;
+  padding-top: 10px !important;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.InputWrapper .mantine-RadioGroup-radioWrapper {
+  overflow: hidden;
+}
+.InputWrapper .mantine-RadioGroup-label {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; 
+}
+.Footer {
+  display: flex;
+  align-items: center;
   margin-top: 30px;
   margin-left: 20px;
-  display: flex !important;
+}
+.Submit {
+  margin-right: 20px;
+}
+.WithoutDesp .mantine-Alert-title {
+  margin-bottom: 0;
 }

@@ -1,12 +1,17 @@
+import { Type, Sizes } from "./consts";
+
+// Function to process nodes and to generate groups and maps for nodes, initial values and validations.
 export function processFormConfig(nodes = []) {
   const initialValues = {};
   const validationMap = {};
+  // Step 1: Iterate nodes to create map for nodes, initial values and validations.
   const nodeMap = nodes.reduce((nodeMap, node) => {
     const { id, required, regex, type, ValidationMsg = "Invalid Input" } = node;
     let { size } = node;
     if (!size) {
-      size = type === "GROUP" ? "XL" : "M";
+      size = type === Type.GROUP ? Sizes.XL : Sizes.M;
     }
+    // Populate validation map.
     if (regex) {
       let regExp = new RegExp(regex);
       validationMap[id] = (val) =>
@@ -18,14 +23,29 @@ export function processFormConfig(nodes = []) {
     } else if (required) {
       validationMap[id] = (val) => (val ? null : "Required Field");
     }
+    // Population nodes map and initial values.
     nodeMap[node.id] = { ...node, size };
     node.value && (initialValues[node.id] = node.value);
     return nodeMap;
   }, {});
 
+  // Step 2: Generate groups to be rendered.
+  const groups = generateGroups(nodes, nodeMap);
+
+  return {
+    groups: groups.sort((a, b) => a.order - b.order),
+    nodeMap,
+    initialValues,
+    validate: validationMap
+  };
+}
+
+// Function to generate groups
+function generateGroups(nodes, nodeMap) {
   const groups = [];
   nodes.forEach((node) => {
     const { id: nodeId, order, options = [], members = [], dependsOn } = node;
+    // Iterate options to populate conditions in dependent nodes.
     if (!dependsOn) {
       options.forEach((option) => {
         const { child } = option;
@@ -44,9 +64,11 @@ export function processFormConfig(nodes = []) {
         }
       });
     }
+    // Add groupId to the child nodes.
     members.forEach((member) => {
       nodeMap[member].groupId = nodeId;
     });
+    // Add groups or single nodes as groups to the groups array.
     if (!nodeMap[nodeId].groupId) {
       groups.push({
         id: nodeId,
@@ -58,15 +80,10 @@ export function processFormConfig(nodes = []) {
       });
     }
   });
-
-  return {
-    groups: groups.sort((a, b) => a.order - b.order),
-    nodeMap,
-    initialValues,
-    validate: validationMap
-  };
+  return groups;
 }
 
+// Function to check if the node is visible or not.
 function isVisible(conditions, visibleMap, form) {
   if (conditions) {
     return conditions.some(
@@ -77,6 +94,7 @@ function isVisible(conditions, visibleMap, form) {
   }
 }
 
+// Function to get map to check if the nodes are visible or not.
 export function getVisibleMap(nodeMap, form, groups) {
   const visibleMap = {};
   groups.forEach(({ id, members }) => {
@@ -88,3 +106,7 @@ export function getVisibleMap(nodeMap, form, groups) {
   });
   return visibleMap;
 }
+
+// Function to get options for select component.
+export const getOptions = (options, dependsOn, form) =>
+  dependsOn ? (options ? options[form[dependsOn]] : []) : options || [];

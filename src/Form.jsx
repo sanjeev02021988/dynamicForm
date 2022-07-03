@@ -1,43 +1,56 @@
-import Group from "./Group";
-import { processFormConfig } from "./Utils";
-import { Button } from "@mantine/core";
+import { useCallback, useMemo, useState } from "react";
+import { Button, Alert } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { useCallback, useMemo } from "react";
-import { getVisibleMap } from "./Utils";
+import { AlertCircle, CircleCheck } from 'tabler-icons-react';
+import { Type } from "./consts";
+import { processFormConfig, getVisibleMap } from "./Utils";
+import Group from "./Group";
 
-// JSON
-// Array: describes the layout of the fields
-// Select: Contains dropdown options, where a option can contain array of fields to be shown if that option is selected.
-// Layout Props: Contains if the field size: S, L, XL or display: INLINE, BLOCK
-
-// CODE
-// Field Wrapper: Will analyse layout props and will see if the dropdown options need to rendered.
-// Will check for validations as well. Will collate the field values as well and pass it to parent.
-// Form Wrapper: Will collect the field values from all the childrens.
-
-// Can have a look at useForm and Form implementation of mantine
-// group , multiple conditions, disable
-
-function Form(props) {
-  const { config } = props;
+function Form({ config } ) {
+  const [isInvalid, setInvalid] = useState(false);
+  const [validationMessage, setValidationMessage] = useState("");
+  // Process config object to get Groups to render and maps for nodes, validation & initial Values.
   const { groups, nodeMap, validate, initialValues } = useMemo(
     () => processFormConfig(config),
     [config]
   );
+  // Set form object using the initial values and validations.
   const form = useForm({ initialValues, validate });
-  const isVisibleMap = useMemo(() => {
-    return getVisibleMap(nodeMap, form.values, groups);
-  }, [nodeMap, form.values, groups]);
-
+  // Required to check if the field should be visible or not.
+  const isVisibleMap = useMemo(
+    () => getVisibleMap(nodeMap, form.values, groups), 
+    [nodeMap, form.values, groups]
+  );
+  // Method to be called on submit of the form.
   const onSubmit = useCallback(() => {
     const values = {};
-    Object.keys(form.values).forEach((key) => {
-      if (isVisibleMap[key] && form.values[key]) {
-        values[key] = form.values[key];
+    // Get and validate values for visible fields.
+    form.clearErrors();
+    for(let key in isVisibleMap) {
+      // Only process fields which are visible.
+      if (isVisibleMap[key] && nodeMap[key].type !== Type.GROUP) {
+        values[key] = form.values[key] || null;
+        const validation = form.validateField?.(key);
+        // Skip further processing if validation failed.
+        if (validation.hasError) {
+          setInvalid(true);
+          setValidationMessage("Invalid Form State!");
+          return;
+        }
       }
-    });
+    }
+    setInvalid(false);
+    setValidationMessage("Form Submitted Successfully!");
+    // form.reset();
     console.log(values);
-  }, [form.values, isVisibleMap]);
+  }, [form.values, isVisibleMap, nodeMap]);
+
+  const alertProps = useMemo(() => ({
+    className: "WithoutDesp",
+     icon: isInvalid ? <AlertCircle size={16} /> : <CircleCheck size={16} />,
+    title: validationMessage,
+    color: isInvalid ? "red" : "green"
+  }), [isInvalid, validationMessage]);
 
   return (
     <div className={"Form"}>
@@ -50,7 +63,10 @@ function Form(props) {
           isVisibleMap={isVisibleMap}
         />
       ))}
-      <Button onClick={onSubmit}>Submit</Button>
+      <div className="Footer">
+        <Button className={"Submit"} onClick={onSubmit}>Submit</Button>
+        {validationMessage && <Alert {...alertProps} />}
+      </div>
     </div>
   );
 }

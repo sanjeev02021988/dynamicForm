@@ -1,30 +1,30 @@
-import { Input, InputWrapper } from "@mantine/core";
+import { Input, InputWrapper, NumberInput } from "@mantine/core";
+import { DatePicker } from '@mantine/dates';
+import { Calendar } from 'tabler-icons-react';
+import { Sizes, SizeMap, FeidlSubType } from "./consts";
 import SelectWrapper from "./SelectWrapper";
-import { SizeMap } from "./consts";
 
-const FieldWrapper = ({ fieldData, form, singleChild }) => {
-  const { id, label, description, required, value, subType, size } = fieldData;
+const FieldWrapper = ({ fieldData, form, fullWidth }) => {
+  const { id, label, description, required, subType, size, placeholder } = fieldData;
   const { error } = form?.getInputProps(id);
-  if (subType === "OPTIONS") {
-    return (
-      <SelectWrapper
-        fieldData={fieldData}
-        form={form}
-        singleChild={singleChild}
-      />
-    );
+  // If field subtype is OPTIONS then return SelectWrapper.
+  if (subType === FeidlSubType.OPTIONS) {
+    return <SelectWrapper fieldData={fieldData} form={form} fullWidth={fullWidth} />;
   }
 
   const fieldJSX = () => {
+    const fieldProps = {
+      id: `field-${id}`,
+      placeholder,
+      ...form?.getInputProps(id)
+    };
     switch (subType) {
+      case FeidlSubType.NUMBER: 
+        return <NumberInput {...fieldProps} error={null} />;
+      case FeidlSubType.DATE: 
+        return <DatePicker {...fieldProps} error={null} icon={<Calendar />}/>;
       default:
-        return (
-          <Input
-            id={`field-${id}`}
-            value={value}
-            {...form?.getInputProps(id)}
-          />
-        );
+        return <Input {...fieldProps}/>;
     }
   };
 
@@ -35,7 +35,7 @@ const FieldWrapper = ({ fieldData, form, singleChild }) => {
       label={label}
       description={description}
       className={"InputWrapper"}
-      style={{ width: SizeMap[singleChild ? "XL" : size] }}
+      style={{ width: SizeMap[fullWidth ? Sizes.XL : size] }}
       error={error}
     >
       {fieldJSX()}

@@ -55,8 +55,8 @@
     "id": "E",
     "value": "e1",
     "type": "FIELD",
-    "order": 4,
     "subType": "OPTIONS",
+    "order": 4,
     "label": "Label: E",
     "options": [
       {
@@ -74,6 +74,8 @@
   {
     "id": "G",
     "type": "FIELD",
+    "subType": "NUMBER",
+    "value": 24,
     "required": true,
     "order": 6,
     "label": "Label: G"
@@ -329,8 +331,8 @@
     "id": "W",
     "value": "w1",
     "type": "FIELD",
-    "size": "XL",
     "subType": "OPTIONS",
+    "size": "XL",
     "order": 0,
     "label": "Label: W",
     "options": [
@@ -357,6 +359,7 @@
     "id": "Y",
     "type": "FIELD",
     "order": 2,
+    "value": "abc@gmail.com",
     "regex": "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$",
     "ValidationMsg": "Invalid Email Format",
     "label": "Label: Y (email)"
@@ -364,9 +367,9 @@
   {
     "id": "Z",
     "type": "FIELD",
+    "subType": "OPTIONS",
     "size": "XL",
     "required": true,
-    "subType": "OPTIONS",
     "url": "/api/v1/options/Z",
     "order": 3,
     "label": "Label: Z"
@@ -374,8 +377,8 @@
   {
     "id": "O",
     "type": "FIELD",
-    "subType": "NUMBER",
-    "regex": "[0-9]",
+    "subType": "DATE",
+    "required": true,
     "order": 1,
     "label": "Label: O"
   }
